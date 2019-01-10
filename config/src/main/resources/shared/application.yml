@@ -1,0 +1,43 @@
+logging:
+  level:
+    org.springframework.security: INFO
+feign:
+  hystrix:
+    enable: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://registry:8761/eureka/
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://auth-service:5000/uaa/users/current
+
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+  # add 链路监控
+  zipkin:
+    base-url: http://zikpin:9411
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+#spring.cloud.bus.enabled=true
+#spring.cloud.bus.trace.enabled=true
+#management.endpoints.web.exposure.include=bus-refresh

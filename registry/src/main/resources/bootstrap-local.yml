@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: registry
+logging:
+  level:
+    org.springframework.security: INFO
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://registry:9761/eureka/
+      registerWithEureka: false
+      fetchRegistry: false
+      server:
+        waitTimeInMsWhenSyncEmpty: 0
+server:
+  port: 9761
